@@ -13,7 +13,7 @@ spring:
       # possible values: validate | update | create | create-drop
       ddl-auto: none
   datasource:
-    url: jdbc:postgresql://localhost:5432/webshop
+    url: jdbc:postgresql://localhost:5432/webshopjwt
     username: edu
     password: edu
    # driver-class-name: com.mysql.jdbc.Driver
