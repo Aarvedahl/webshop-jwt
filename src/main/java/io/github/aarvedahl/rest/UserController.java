@@ -1,13 +1,12 @@
 package io.github.aarvedahl.rest;
 
+import io.github.aarvedahl.dto.Userdto;
 import io.github.aarvedahl.model.User;
 import io.github.aarvedahl.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
@@ -24,6 +23,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
 
     @RequestMapping( method = GET, value = "/user/{userId}" )
     @PreAuthorize("hasRole('ADMIN')")
@@ -47,5 +47,12 @@ public class UserController {
     @PreAuthorize("hasRole('USER')")
     public User user(Principal user) {
         return this.userService.findByUsername(user.getName());
+    }
+    
+    @DeleteMapping
+    public List<User> removeUser(@RequestBody Userdto userdto) {
+        User user = userService.findById(Long.valueOf(userdto.getUserid()));
+        userService.deleteUser(user);
+        return loadAll();
     }
 }
