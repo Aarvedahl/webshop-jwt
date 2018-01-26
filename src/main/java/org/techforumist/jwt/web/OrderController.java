@@ -32,14 +32,14 @@ public class OrderController {
 
     List<Purchase> orders;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
     public List<Purchase> getOrders() {
         orders = orderRepository.findAll();
         return orders;
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @PostMapping
     public void makePurchase(@RequestBody List<Article> articles) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -52,7 +52,7 @@ public class OrderController {
         }
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PatchMapping
     public void editPurchase(@RequestBody Purchasedto purchasedto) {
         Purchase purchase = new Purchase(purchasedto.getOrderid(), new AppUser(purchasedto.getUserid()), purchasedto.getOrderdate(), purchasedto.isCanceled());

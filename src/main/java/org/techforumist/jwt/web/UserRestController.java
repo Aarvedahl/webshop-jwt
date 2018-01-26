@@ -21,14 +21,14 @@ public class UserRestController {
 	private UserRepository userRepository;
 
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public List<AppUser> users() {
 		return userRepository.findAll();
 	}
 
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
 	public ResponseEntity<AppUser> userById(@PathVariable Long id) {
 		AppUser appUser = userRepository.findOne(id);
@@ -39,7 +39,7 @@ public class UserRestController {
 		}
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@DeleteMapping("/users")
 	public List<AppUser> removeUser(@RequestBody Userdto userdto) {
 		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled(), userdto.getFirstname());
@@ -48,7 +48,7 @@ public class UserRestController {
 	}
 
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = "/users", method = RequestMethod.POST)
 	public ResponseEntity<AppUser> createUser(@RequestBody Userdto userdto) {
 		if (userRepository.findOneByUsername(userdto.getUsername()) != null) {
@@ -58,7 +58,7 @@ public class UserRestController {
 		return new ResponseEntity<AppUser>(userRepository.save(user), HttpStatus.CREATED);
 	}
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PatchMapping
 	public void editUser(@RequestBody Userdto userdto) {
 		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled(), userdto.getFirstname());

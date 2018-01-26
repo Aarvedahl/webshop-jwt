@@ -19,7 +19,7 @@ angular.module('JWTDemoApp', [ 'ui.router' ])
 			}
 		} else {
 			// checking the user is authorized to view the states
-			if (toState.data && toState.data.role) {
+			/*if (toState.data && toState.data.role) {
 				var hasAccess = false;
 				for (var i = 0; i < AuthService.user.roles.length; i++) {
 					var role = AuthService.user.roles[i];
@@ -33,7 +33,7 @@ angular.module('JWTDemoApp', [ 'ui.router' ])
 					$state.go('access-denied');
 				}
 
-			}
+			}*/
 		}
 	});
 });

@@ -51,15 +51,6 @@ angular.module('JWTDemoApp').config(function ($stateProvider, $urlRouterProvider
                 controller: 'PageNotFoundController'
             }
         }
-    }).state('test', {
-        parent: 'nav',
-        url: '/test',
-        views: {
-            'content@': {
-                templateUrl: 'app/views/test.html',
-                controller: 'TestController'
-            }
-        }
     }).state('products', {
         parent: 'nav',
         url: '/products',
@@ -81,9 +72,6 @@ angular.module('JWTDemoApp').config(function ($stateProvider, $urlRouterProvider
     }).state('orders', {
         parent: 'nav',
         url: '/orders',
-       // data: {
-       //     role: 'ADMIN'
-      //  },
         views: {
             'content@': {
                 templateUrl: 'app/views/orders.html',
