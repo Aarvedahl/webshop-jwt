@@ -18,34 +18,40 @@ public class ArticleController {
 
     List<Article> articles;
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
     public List<Article> getAllArticles() {
         return getArticles();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('USER')")
+    @GetMapping("/user")
+    public List<Article> getArticleList() {
+        return getArticles();
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping
     public List<Article> updateFullArticle(@RequestBody Article article) {
         articleRepository.save(article);
         return getArticles();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PatchMapping
     public List<Article> updateArticle(@RequestBody Article article) {
         articleRepository.save(article);
         return getArticles();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public List<Article> addArticle(@RequestBody Article article) {
         articleRepository.save(article);
         return getArticles();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping
     public List<Article> deleteArticle(@RequestBody Article article) {
         articleRepository.delete(article);

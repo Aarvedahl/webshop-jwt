@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="alert alert-danger margin-top-5" ng-show="message">{{message}}</div>
+    <div class="card" ng-hide="message">
+        <div class="card-header">
+            <i class="fa fa-plus fa-lg" aria-hidden="true" ng-click="checkedTrue()"></i> Add <span
+                class="sr-only">(current)</span>
+        </div>
+        <div class="card-body formData">
+            <form class="form" name="articleForm" ng-if="checked">
+                <div class="form-group">
+                    <label>Articlename</label>
+                    <input type="text" class="form-control" name="articlename"
+                           ng-model="tempArticleData.articlename"/>
+                </div>
+                <div class="form-group">
+                    <label>Brand</label>
+                    <input type="text" class="form-control" name="brand" ng-model="tempArticleData.brand"/>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" class="form-control" name="description"
+                           ng-model="tempArticleData.description"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="number" class="form-control" name="price" ng-model="tempArticleData.price"/>
+                </div>
+                <a href="javascript:void(0);" class="btn btn-warning" ng-click="checkedFalse()">Cancel</a>
+                <a href="javascript:void(0);" class="btn btn-success" ng-hide="tempArticleData.articleid"
+                   ng-click="addArticle(tempArticleData)">Add Article</a>
+                <a href="javascript:void(0);" class="btn btn-success" ng-hide="!tempArticleData.articleid"
+                   ng-click="updateArticle(tempArticleData)">Update Article</a>
+            </form>
+        </div>
+    </div>
+    <table class="table table-striped" ng-hide="message">
+        <tr>
+            <th width="5%">#</th>
+            <th width="20%">Name</th>
+            <th width="30%">Brand</th>
+            <th width="20%">Price</th>
+            <th width="14%">Description</th>
+            <th width="10%"></th>
+        </tr>
+        <tr ng-repeat="article in articles">
+            <td>{{$index + 1}}</td>
+            <td>{{article.articlename}}</td>
+            <td>{{article.brand}}</td>
+            <td>{{article.price}}</td>
+            <td>{{article.description}}</td>
+            <td>
+                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" ng-click="editArticle(article)"></i>
+                <i class="fa fa-trash fa-lg" aria-hidden="true" ng-click="deleteArticle(article)"></i>
+            </td>
+        </tr>
+    </table>
+</div>

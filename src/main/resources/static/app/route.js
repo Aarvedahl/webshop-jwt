@@ -1,8 +1,6 @@
 angular.module('JWTDemoApp').config(function ($stateProvider, $urlRouterProvider) {
 
-    // the ui router will redirect if a invalid state has come.
     $urlRouterProvider.otherwise('/page-not-found');
-    // parent view - navigation state
     $stateProvider.state('nav', {
         abstract: true,
         url: '',
@@ -19,18 +17,6 @@ angular.module('JWTDemoApp').config(function ($stateProvider, $urlRouterProvider
             'content@': {
                 templateUrl: 'app/views/login.html',
                 controller: 'LoginController'
-            }
-        }
-    }).state('users', {
-        parent: 'nav',
-        url: '/users',
-        data: {
-            role: 'ADMIN'
-        },
-        views: {
-            'content@': {
-                templateUrl: 'app/views/users.html',
-                controller: 'UsersController',
             }
         }
     }).state('home', {
@@ -60,15 +46,6 @@ angular.module('JWTDemoApp').config(function ($stateProvider, $urlRouterProvider
                 controller: 'ArticleController'
             }
         }
-    }).state('access-denied', {
-        parent: 'nav',
-        url: '/access-denied',
-        views: {
-            'content@': {
-                templateUrl: 'app/views/access-denied.html',
-                controller: 'AccessDeniedController'
-            }
-        }
     }).state('orders', {
         parent: 'nav',
         url: '/orders',
@@ -76,6 +53,15 @@ angular.module('JWTDemoApp').config(function ($stateProvider, $urlRouterProvider
             'content@': {
                 templateUrl: 'app/views/orders.html',
                 controller: 'OrderController'
+            }
+        }
+    }).state('articles', {
+        parent: 'nav',
+        url: '/articles',
+        views: {
+            'content@': {
+                templateUrl: 'app/views/articles.html',
+                controller: 'AdminArticleController'
             }
         }
     }).state('register', {

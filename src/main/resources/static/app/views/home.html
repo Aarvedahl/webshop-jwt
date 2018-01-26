@@ -1,1 +1,17 @@
-<pre>{{user|json}}</pre>
+<div class="list-group">
+    <h4>{{user.username}}</h4>
+    <label ng-show='user.orders.length > 0'>View Orders<input type="checkbox" ng-model="checked"
+                                                              ng-init="checked=false"/></label>
+    <div ng-if="checked">
+        <h6>Orders</h6>
+        <div class="list-group-item" ng-repeat="order in user.orders">
+            # {{order.orderid}} <span>{{order.orderdate | date:'medium'}}</span>
+            <ul>
+                <h6>Articles</h6>
+                <li class="list-group-item" ng-repeat="article in order.articleList">
+                    {{article.articleid.brand}} {{article.articleid.articlename}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

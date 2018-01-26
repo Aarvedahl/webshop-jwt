@@ -35,13 +35,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
  */
 @RestController
 public class HomeRestController {
-	@Autowired
-	private UserRepository userRepository;
+	@Autowired private UserRepository userRepository;
 
-	/**
-	 * This method is used for user registration. Note: user registration is not
-	 * require any authentication.
-	 */
+
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ResponseEntity<AppUser> createUser(@RequestBody Userdto userdto) {
 		if (userRepository.findOneByUsername(userdto.getUsername()) != null) {
@@ -54,12 +50,6 @@ public class HomeRestController {
 		return new ResponseEntity<AppUser>(userRepository.save(user), HttpStatus.CREATED);
 	}
 
-	/**
-	 * This method will return the logged user.
-	 * 
-	 * @param principal
-	 * @return Principal java security principal object
-	 */
 	@RequestMapping("/user")
 	public AppUser user(Principal principal) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -67,13 +57,6 @@ public class HomeRestController {
 		return userRepository.findOneByUsername(loggedUsername);
 	}
 
-	/**
-	 * @param username
-	 * @param password
-	 * @param response
-	 * @return JSON contains token and user after success authentication.
-	 * @throws IOException
-	 */
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> login(@RequestParam String username, @RequestParam String password,
 			HttpServletResponse response) throws IOException {

@@ -1,41 +1,42 @@
 <style>
-.user {
-	font-weight: bold;
-}
+    .user {
+        font-weight: bold;
+    }
 
-.logout {
-	cursor: pointer;
-	margin-left: 5px;
-}
+    .logout {
+        cursor: pointer;
+        margin-left: 5px;
+    }
 </style>
 
 <nav class="navbar navbar-default navbar-static-top">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" ui-sref="home">JWT</a>
-		</div>
-		<div userid="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<li ng-show="user.username"><a ui-sref="users">Users</a></li>
-				<li ng-show="user.username"><a ui-sref="products">Products</a></li>
-				<li ng-show="user.username"><a ui-sref="orders">Orders</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="home">Amazon 2.0</a>
+        </div>
+        <div userid="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ng-show="user.username"><a ui-sref="products">Products</a></li>
+                <li ng-show="user.username"><a ui-sref="orders">Orders</a></li>
+                <li ng-show="user.username"><a ui-sref="articles">Articles</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
 
-				<li ng-show="user.username"><a> <span class="user">Hi,
+                <li ng-show="user.username">
+                    <a> <span class="user">Hi,
 							{{user.firstname}}</span> <span ng-click="logout()" href=""
-						class="logout">Logout</span>
-				</a></li>
-				<li ng-show="!user.username"><a ui-sref="register">Register</a></li>
-			</ul>
-		</div>
-		<!--/.nav-collapse -->
-	</div>
+                                                            class="logout">Logout</span>
+                    </a>
+                </li>
+                <li ng-show="!user.username"><a ui-sref="register">Register</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>

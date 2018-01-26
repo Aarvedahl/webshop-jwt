@@ -7,7 +7,7 @@ angular.module('JWTDemoApp')
 
         var shoppingBasket = [];
 
-        $http.get('api/articles').success(function(res) {
+        $http.get('api/articles/user').success(function(res) {
             $scope.articles = res;
 
         }).error(function(error) {
@@ -28,8 +28,6 @@ angular.module('JWTDemoApp')
         };
 
         $scope.checkOut = function () {
-            console.log(shoppingBasket);
-            console.log("Successful purchase");
             $http({
                 url: 'api/orders',
                 method: "POST",

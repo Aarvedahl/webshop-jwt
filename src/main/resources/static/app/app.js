@@ -1,4 +1,3 @@
-// Creating angular JWTDemoApp with module name "JWTDemoApp"
 angular.module('JWTDemoApp', [ 'ui.router' ])
 
 
@@ -17,23 +16,6 @@ angular.module('JWTDemoApp', [ 'ui.router' ])
 				event.preventDefault();
 				$state.go('login');
 			}
-		} else {
-			// checking the user is authorized to view the states
-			/*if (toState.data && toState.data.role) {
-				var hasAccess = false;
-				for (var i = 0; i < AuthService.user.roles.length; i++) {
-					var role = AuthService.user.roles[i];
-					if (toState.data.role == role) {
-						hasAccess = true;
-						break;
-					}
-				}
-				if (!hasAccess) {
-					event.preventDefault();
-					$state.go('access-denied');
-				}
-
-			}*/
 		}
 	});
 });
