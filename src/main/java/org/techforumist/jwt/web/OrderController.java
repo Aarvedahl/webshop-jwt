@@ -43,14 +43,13 @@ public class OrderController {
     @PostMapping
     public void makePurchase(@RequestBody List<Article> articles) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(auth.getName());
-       /*AppUser users = userRepository.findOneByUsername(auth.getName());
+        AppUser users = userRepository.findOneByUsername(auth.getName());
         Purchase purchase = new Purchase(new Date(), false, new AppUser(users.getUserid()));
-       orderRepository.save(purchase);
-       for(Article article: articles) {
-           Purchase_article purchase_article = new Purchase_article(new Purchase(purchase.getOrderid()), new Article(article.getArticleid()));
-           purchaseRepository.save(purchase_article);
-       } */
+        orderRepository.save(purchase);
+        for (Article article : articles) {
+            Purchase_article purchase_article = new Purchase_article(new Purchase(purchase.getOrderid()), new Article(article.getArticleid()));
+            purchaseRepository.save(purchase_article);
+        }
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")

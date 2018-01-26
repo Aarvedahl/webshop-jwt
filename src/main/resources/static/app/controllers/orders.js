@@ -2,9 +2,17 @@ angular.module('JWTDemoApp')
 
     .controller('OrderController', function($http, $scope, AuthService) {
 
-        $http.get('api/users').then(function (response) {
-            $scope.users = response.data;
-        });
+        var init = function() {
+            $http.get('api/users').success(function(res) {
+                $scope.users = res;
+                $scope.message='';
+
+            }).error(function(error) {
+                $scope.message = error.message;
+
+            });
+        };
+
 
         $scope.removeUser = function (user) {
             $http({
@@ -42,9 +50,7 @@ angular.module('JWTDemoApp')
             })
                 .then(function (response) {
                         // success
-                        $http.get('http://localhost:8080/api/users').then(function (response) {
-                            $scope.users = response.data;
-                        });
+                        init();
                     },
                     function (response) {
                         // failed
@@ -53,5 +59,5 @@ angular.module('JWTDemoApp')
                     });
         };
 
-
+        init();
     });

@@ -27,15 +27,11 @@ angular.module('JWTDemoApp')
             return shoppingBasket;
         };
 
-        // Först behöver vi ta reda på vilken user som är inloggad så ordern kan sätta rätt userid innan vi kan checka ut en order
-
         $scope.checkOut = function () {
-            $scope.showAlert = true;
             console.log(shoppingBasket);
-            shoppingBasket = [];
             console.log("Successful purchase");
-            /*$http({
-                url: '../api/orders',
+            $http({
+                url: 'api/orders',
                 method: "POST",
                 data: shoppingBasket,
                 headers: {
@@ -52,7 +48,7 @@ angular.module('JWTDemoApp')
                         // failed
                         console.error(response);
                         console.log("Purchase not successfully made");
-                    }); */
+                    });
 
         };
     });

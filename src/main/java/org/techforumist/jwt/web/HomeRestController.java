@@ -47,7 +47,7 @@ public class HomeRestController {
 		if (userRepository.findOneByUsername(userdto.getUsername()) != null) {
 			throw new RuntimeException("Username already exist");
 		}
-		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled());
+		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled(), userdto.getFirstname());
 		List<String> roles = new ArrayList<>();
 		roles.add("USER");
 		user.setRoles(roles);

@@ -42,7 +42,7 @@ public class UserRestController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@DeleteMapping("/users")
 	public List<AppUser> removeUser(@RequestBody Userdto userdto) {
-		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled());
+		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled(), userdto.getFirstname());
 		userRepository.delete(user);
 		return users();
 	}
@@ -54,14 +54,14 @@ public class UserRestController {
 		if (userRepository.findOneByUsername(userdto.getUsername()) != null) {
 			throw new RuntimeException("Username already exist");
 		}
-		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled());
+		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled(), userdto.getFirstname());
 		return new ResponseEntity<AppUser>(userRepository.save(user), HttpStatus.CREATED);
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PatchMapping
 	public void editUser(@RequestBody Userdto userdto) {
-		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled());
+		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled(), userdto.getFirstname());
 		userRepository.save(user);
 	}
 
