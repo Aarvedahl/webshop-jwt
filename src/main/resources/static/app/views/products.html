@@ -1,0 +1,39 @@
+<h2>We are going to display all articles here</h2>
+
+<div class="row">
+    <div class="col-12">
+        <h4 data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-cart-arrow-down fa-lg" aria-hidden="true"></i>Shooping Basket
+        </h4>
+    </div>
+    <div class="col-4" ng-repeat="article in articles ">
+        <h5>{{article.articlename}}</h5>
+        <small>by {{article.brand}}</small>
+        <h6>{{article.price}} :-</h6>
+        <button type="button" class="btn btn-success" ng-click="addToCart(article)">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart
+        </button>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" ng-repeat="article in getShoppingCart() track by $index">
+                    <h6><i class="fa fa-times" aria-hidden="true" ng-click="removeFromlist(article)"></i>  {{article.articlename}} {{article.brand}} {{article.price}} :- </h6><hr/>
+                    <div class="alert alert-success" role="alert" ng-show="showAlert">
+                        Your purchase has been successfully made!
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" ng-click="checkOut()">Check Out Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

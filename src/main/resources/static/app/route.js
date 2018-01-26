@@ -60,6 +60,15 @@ angular.module('JWTDemoApp').config(function($stateProvider, $urlRouterProvider)
                 controller : 'TestController'
             }
         }
+    }).state('products', {
+        parent : 'nav',
+        url : '/products',
+        views : {
+            'content@' : {
+                templateUrl : 'app/views/products.html',
+                controller : 'ArticleController'
+            }
+        }
     }).state('access-denied', {
 		parent : 'nav',
 		url : '/access-denied',

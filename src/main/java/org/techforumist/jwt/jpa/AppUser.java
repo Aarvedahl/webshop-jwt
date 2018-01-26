@@ -4,12 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,6 +21,7 @@ public class AppUser implements UserDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userid;
 
+	@Column
 	private String firstname;
 
 	@Column(unique = true)
@@ -34,8 +30,20 @@ public class AppUser implements UserDetails {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 
+
 	@ElementCollection
 	private List<String> roles = new ArrayList<>();
+
+	@OneToMany(mappedBy = "userid", cascade=CascadeType.MERGE)
+	private List<Purchase> orders;
+
+	public AppUser(int userid, String username, String password, boolean enabled) {
+		this.userid = Long.valueOf(userid);
+		this.username = username;
+		this.password = password;
+	}
+
+	public AppUser() { }
 
 	public Long getUserid() {
 		return userid;
