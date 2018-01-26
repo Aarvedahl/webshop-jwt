@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="list-group">
+        <h3>Orders</h3>
+        <div class="list-group-item" ng-repeat="user in users">
+            <i class="fa fa-trash fa-lg" aria-hidden="true" ng-click="removeUser(user)"></i>
+            <h4>{{user.username}}</h4>
+            <label ng-show='user.orders.length > 0'>View Orders<input type="checkbox" ng-model="checked"
+                                                                      ng-init="checked=false"/></label>
+            <div ng-if="checked">
+                <h6>Orders</h6>
+                <div class="list-group-item" ng-repeat="order in user.orders">
+                    # {{order.orderid}} <span>{{order.orderdate | date:'medium'}}</span>
+                    <span ng-show="!order.canceled"><button type="button" ng-click="cancelOrder(user, order)"
+                                                            class="btn btn-danger">Avbeställ order</button></span>
+                    <span ng-show="order.canceled"><button type="button" class="btn btn-success"
+                                                           ng-click="cancelOrder(user, order)">Ångra Avbeställning</button></span>
+                    <ul>
+                        <h6>Articles</h6>
+                        <li class="list-group-item" ng-repeat="article in order.articleList">
+                            {{article.articleid.brand}} {{article.articleid.articlename}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

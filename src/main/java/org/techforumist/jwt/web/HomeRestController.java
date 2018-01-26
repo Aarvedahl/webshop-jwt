@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.techforumist.jwt.dto.Userdto;
 import org.techforumist.jwt.jpa.AppUser;
 import org.techforumist.jwt.repository.UserRepository;
 
@@ -40,19 +41,17 @@ public class HomeRestController {
 	/**
 	 * This method is used for user registration. Note: user registration is not
 	 * require any authentication.
-	 * 
-	 * @param appUser
-	 * @return
 	 */
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public ResponseEntity<AppUser> createUser(@RequestBody AppUser appUser) {
-		if (userRepository.findOneByUsername(appUser.getUsername()) != null) {
+	public ResponseEntity<AppUser> createUser(@RequestBody Userdto userdto) {
+		if (userRepository.findOneByUsername(userdto.getUsername()) != null) {
 			throw new RuntimeException("Username already exist");
 		}
+		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled());
 		List<String> roles = new ArrayList<>();
 		roles.add("USER");
-		appUser.setRoles(roles);
-		return new ResponseEntity<AppUser>(userRepository.save(appUser), HttpStatus.CREATED);
+		user.setRoles(roles);
+		return new ResponseEntity<AppUser>(userRepository.save(user), HttpStatus.CREATED);
 	}
 
 	/**

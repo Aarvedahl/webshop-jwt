@@ -45,37 +45,33 @@ public class AppUser implements UserDetails {
 
 	public AppUser() { }
 
-	public Long getUserid() {
-		return userid;
+	public AppUser(int userid) {
+		this.userid = Long.valueOf(userid);
 	}
 
-	public void setUserid(Long userid) {
+	public AppUser(Long userid) {
 		this.userid = userid;
 	}
 
-	public String getFirstname() {
-		return firstname;
-	}
+	public Long getUserid() { return userid; }
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
+	public void setUserid(Long userid) { this.userid = userid; }
 
-	public List<String> getRoles() {
-		return roles;
-	}
+	public String getFirstname() { return firstname; }
 
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
-	}
+	public void setFirstname(String firstname) { this.firstname = firstname; }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	public List<String> getRoles() { return roles; }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	public void setRoles(List<String> roles) { this.roles = roles; }
+
+	public void setUsername(String username) { this.username = username; }
+
+	public void setPassword(String password) { this.password = password; }
+
+	public List<Purchase> getOrders() { return orders; }
+
+	public void setOrders(List<Purchase> orders) { this.orders = orders; }
 
 	@JsonIgnore
 	@Override

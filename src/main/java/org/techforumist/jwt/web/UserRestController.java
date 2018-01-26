@@ -50,13 +50,15 @@ public class UserRestController {
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/users", method = RequestMethod.POST)
-	public ResponseEntity<AppUser> createUser(@RequestBody AppUser appUser) {
-		if (userRepository.findOneByUsername(appUser.getUsername()) != null) {
+	public ResponseEntity<AppUser> createUser(@RequestBody Userdto userdto) {
+		if (userRepository.findOneByUsername(userdto.getUsername()) != null) {
 			throw new RuntimeException("Username already exist");
 		}
-		return new ResponseEntity<AppUser>(userRepository.save(appUser), HttpStatus.CREATED);
+		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled());
+		return new ResponseEntity<AppUser>(userRepository.save(user), HttpStatus.CREATED);
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PatchMapping
 	public void editUser(@RequestBody Userdto userdto) {
 		AppUser user = new AppUser(userdto.getUserid(), userdto.getUsername(), userdto.getPassword(), userdto.isEnabled());

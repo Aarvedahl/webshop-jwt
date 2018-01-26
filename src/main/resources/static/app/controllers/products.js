@@ -15,7 +15,6 @@ angular.module('JWTDemoApp')
         });
 
 
-        // Först behöver vi ta reda på vilken user som är inloggad så ordern kan sätta rätt userid innan vi kan checka ut en order
         $scope.addToCart = function (article) {
             shoppingBasket.push(article);
         };
@@ -27,6 +26,8 @@ angular.module('JWTDemoApp')
         $scope.getShoppingCart = function () {
             return shoppingBasket;
         };
+
+        // Först behöver vi ta reda på vilken user som är inloggad så ordern kan sätta rätt userid innan vi kan checka ut en order
 
         $scope.checkOut = function () {
             $scope.showAlert = true;
