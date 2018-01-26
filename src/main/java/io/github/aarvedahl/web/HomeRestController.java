@@ -1,4 +1,4 @@
-package org.techforumist.jwt.web;
+package io.github.aarvedahl.web;
 
 import java.io.IOException;
 import java.security.Principal;
@@ -10,6 +10,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import io.github.aarvedahl.dto.Userdto;
+import io.github.aarvedahl.jpa.AppUser;
+import io.github.aarvedahl.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,19 +23,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.techforumist.jwt.dto.Userdto;
-import org.techforumist.jwt.jpa.AppUser;
-import org.techforumist.jwt.repository.UserRepository;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-/**
- * All web services in this controller will be available for all the users
- * 
- * @author Sarath Muraleedharan
- *
- */
+
 @RestController
 public class HomeRestController {
 	@Autowired private UserRepository userRepository;

@@ -1,4 +1,4 @@
-package org.techforumist.jwt.jpa;
+package io.github.aarvedahl.jpa;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;

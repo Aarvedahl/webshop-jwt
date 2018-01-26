@@ -1,7 +1,7 @@
-package org.techforumist.jwt.repository;
+package io.github.aarvedahl.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.techforumist.jwt.jpa.AppUser;
+import io.github.aarvedahl.jpa.AppUser;
 
 /**
  * @author Sarath Muraleedharan

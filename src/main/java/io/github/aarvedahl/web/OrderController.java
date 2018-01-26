@@ -1,18 +1,18 @@
-package org.techforumist.jwt.web;
+package io.github.aarvedahl.web;
 
+import io.github.aarvedahl.jpa.Article;
+import io.github.aarvedahl.repository.OrderRepository;
+import io.github.aarvedahl.repository.Purchase_articleRepository;
+import io.github.aarvedahl.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import org.techforumist.jwt.dto.Purchasedto;
-import org.techforumist.jwt.jpa.AppUser;
-import org.techforumist.jwt.jpa.Article;
-import org.techforumist.jwt.jpa.Purchase;
-import org.techforumist.jwt.jpa.Purchase_article;
-import org.techforumist.jwt.repository.OrderRepository;
-import org.techforumist.jwt.repository.Purchase_articleRepository;
-import org.techforumist.jwt.repository.UserRepository;
+import io.github.aarvedahl.dto.Purchasedto;
+import io.github.aarvedahl.jpa.AppUser;
+import io.github.aarvedahl.jpa.Purchase;
+import io.github.aarvedahl.jpa.Purchase_article;
 
 import java.util.Date;
 import java.util.List;

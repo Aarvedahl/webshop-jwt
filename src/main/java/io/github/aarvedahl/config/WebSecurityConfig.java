@@ -1,4 +1,4 @@
-package org.techforumist.jwt.config;
+package io.github.aarvedahl.config;
 
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

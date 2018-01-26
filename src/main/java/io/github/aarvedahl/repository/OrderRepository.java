@@ -1,7 +1,7 @@
-package org.techforumist.jwt.repository;
+package io.github.aarvedahl.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.techforumist.jwt.jpa.Purchase;
+import io.github.aarvedahl.jpa.Purchase;
 
 public interface OrderRepository extends JpaRepository<Purchase, Long> {
 }

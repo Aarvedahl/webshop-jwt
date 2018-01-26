@@ -1,4 +1,4 @@
-package org.techforumist.jwt.dto;
+package io.github.aarvedahl.dto;
 
 public class Userdto {
 

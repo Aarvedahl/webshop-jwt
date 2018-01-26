@@ -1,38 +1,22 @@
-package org.techforumist.jwt.jpa;
+package io.github.aarvedahl.dto;
 
+public class Articledto {
 
-import javax.persistence.*;
-import java.io.Serializable;
-
-@Entity
-public class Article implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int articleid;
 
-    @Column
     private String articlename;
 
-    @Column
     private String description;
 
-    @Column
     private int price;
 
-    @Column
     private int stock;
 
-    @Column
     private String brand;
 
-    public Article() { }
-    public Article(int articleid) {
-        this.articleid = articleid;
-    }
-    public Article(int articleid, String articlename, String description, int price, int stock, String brand) {
+    public Articledto() { }
+
+    public Articledto(int articleid, String articlename, String description, int price, int stock, String brand) {
         this.articleid = articleid;
         this.articlename = articlename;
         this.description = description;
@@ -55,4 +39,3 @@ public class Article implements Serializable {
     public void setBrand(String brand) { this.brand = brand; }
 
 }
-

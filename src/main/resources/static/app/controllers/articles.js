@@ -2,8 +2,6 @@ angular.module('JWTDemoApp')
 
     .controller('AdminArticleController', function ($http, $scope, AuthService) {
 
-        // TODO Eventuellt visa orderhistorik på home
-
         $scope.checked = false;
         $scope.showAlert = false;
 
@@ -16,7 +14,6 @@ angular.module('JWTDemoApp')
             $scope.message = error.message;
 
         });
-
 
         $scope.editArticle = function (article) {
             $scope.checked = true;

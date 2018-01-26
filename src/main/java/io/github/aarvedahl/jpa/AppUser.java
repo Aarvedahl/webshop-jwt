@@ -1,4 +1,4 @@
-package org.techforumist.jwt.jpa;
+package io.github.aarvedahl.jpa;
 
 import java.util.ArrayList;
 import java.util.Collection;

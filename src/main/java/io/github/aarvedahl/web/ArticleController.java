@@ -1,11 +1,10 @@
-package org.techforumist.jwt.web;
+package io.github.aarvedahl.web;
 
+import io.github.aarvedahl.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.techforumist.jwt.dto.Articledto;
-import org.techforumist.jwt.jpa.Article;
-import org.techforumist.jwt.repository.ArticleRepository;
+import io.github.aarvedahl.jpa.Article;
 
 import java.util.List;
 
