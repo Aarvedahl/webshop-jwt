@@ -37,12 +37,6 @@ public class AppUser implements UserDetails {
 	@OneToMany(mappedBy = "userid", cascade=CascadeType.MERGE)
 	private List<Purchase> orders;
 
-	/*public AppUser(int userid, String username, String password, boolean enabled) {
-		this.userid = Long.valueOf(userid);
-		this.username = username;
-		this.password = password;
-	} */
-
 	public AppUser() { }
 
 	public AppUser(int userid) {

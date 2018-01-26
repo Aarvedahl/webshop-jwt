@@ -81,6 +81,9 @@ angular.module('JWTDemoApp').config(function ($stateProvider, $urlRouterProvider
     }).state('orders', {
         parent: 'nav',
         url: '/orders',
+       // data: {
+       //     role: 'ADMIN'
+      //  },
         views: {
             'content@': {
                 templateUrl: 'app/views/orders.html',

@@ -1,6 +1,7 @@
 package org.techforumist.jwt.config;
 
 import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -8,15 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-/**
- * Spring Web security configuration class
- * 
- * @author Sarath Muraleedharan
- *
- */
+
 @Configurable
 @EnableWebSecurity
-// Modifying or overriding the default spring boot security.
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	// This method is for overriding some configuration of the WebSecurity
