@@ -3,18 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.techforumist.jwt</groupId>
-	<artifactId>jwt-spring-boot-security-angularjs</artifactId>
+	<groupId>io.github.aarvedahl</groupId>
+	<artifactId>jwt-webshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>jwt-spring-boot-security-angularjs</name>
-	<description>Simple demo with angular js and spring security </description>
+	<name>jwt-webshop</name>
+	<description>Simple webshop with angular js and spring security </description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.2.RELEASE</version>
+		<version>1.5.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
